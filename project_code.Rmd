@@ -10,6 +10,12 @@ Try executing this chunk by clicking the *Run* button within the chunk or by pla
 ```{r}
 #Recommend opening files as an object 
 
+#Code if you want to download the fire data 
+temp <- tempfile()
+download.file("https://firms.modaps.eosdis.nasa.gov/data/download/DL_FIRE_J1V-C2_251815.zip",temp,mode = "wb")
+unzip(temp, "fire_nrt_J1V-C2_251815.csv")
+fireData<- read.table("fire_nrt_J1V-C2_251815.csv", sep=",", header=T)
+
 ```
 
 Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Cmd+Option+I*.
