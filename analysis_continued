@@ -8,7 +8,7 @@ casb_birdProject/C&S Bio M185 Project -- Woodpeckers.ipynb at main · yh09/casb_
 > 
 > plot(x,y,xlab="Fire Cover",ylab="Beta Sensitivity")
 
-#removes entries <=0 and fit exponential model
+#removes entries <=0 
 > firedata[firedata<=0] <- NA
 > firedata
       beta_mean   xi_mean  gamma_mean fire_cover
@@ -116,10 +116,13 @@ casb_birdProject/C&S Bio M185 Project -- Woodpeckers.ipynb at main · yh09/casb_
 102 0.021627750 0.1626152 0.008599584      24004
 103          NA 0.1626152 0.008599584       9596
 
+#name the processed dataset newfire
 > newfire<-firedata[complete.cases(firedata),]
 > newx=newfire$fire_cover
 > newy=newfire$beta_mean
 > plot(newx,newy)
+
+#fitting an exponential model
 > exponential.model <- lm(log(newy)~ newx)
 > summary(exponential.model)
 
