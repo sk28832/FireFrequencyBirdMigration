@@ -143,20 +143,20 @@ Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’
 Residual standard error: 0.6273 on 53 degrees of freedom
 Multiple R-squared:  0.4868,	Adjusted R-squared:  0.4771 
 F-statistic: 50.27 on 1 and 53 DF,  p-value: 3.233e-09
+#we have a small p-value which supports the exponential model
 
+#graph of beta versus fire cover
 > sortx=sort(newx)
 > sorty=0.1337*0.9999^sortx
 > plot(newx,newy,xlab="Fire Cover",ylab="Beta Sensitivity")
 > lines(sortx,sorty,col="blue")
+
+#graph of ln(beta) versus fire cover
 > plot(newx,log(newy),xlab="Fire Cover",ylab="ln(Beta Sensitivity)")
-> abline(newx,log(newy),col="blue")
-> plot(newx,log(newy),xlab="Fire Cover",ylab="ln(Beta Sensitivity)")
-> logy=-2.012-4.144*10^-5(newx)
-Error: attempt to apply non-function
 > logy=-2.012-4.144*10^-5*(newx)
 > lines(newx,logy,col="blue")
 
-#I also tried to map the fire data but it didn’t turn out good.
+#I also tried to map the fire data but it didn’t turn out good. (So we didn't include it in the presentation or the report)
 > map1<-ggplot(merged,aes(x=cell_lng,y=cell_lat))+geom_polygon(aes(fill=fire_cover),color="black")
 > map1
 > map2<-map1+scale_fill_gradient(name="Fire Cover",low="yellow",high="red")
