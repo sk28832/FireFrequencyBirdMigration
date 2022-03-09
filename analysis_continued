@@ -116,13 +116,13 @@ casb_birdProject/C&S Bio M185 Project -- Woodpeckers.ipynb at main · yh09/casb_
 102 0.021627750 0.1626152 0.008599584      24004
 103          NA 0.1626152 0.008599584       9596
 
-#name the processed dataset newfire
+#plot the new dataset
 > newfire<-firedata[complete.cases(firedata),]
 > newx=newfire$fire_cover
 > newy=newfire$beta_mean
 > plot(newx,newy)
 
-#fitting an exponential model
+#fit an exponential model
 > exponential.model <- lm(log(newy)~ newx)
 > summary(exponential.model)
 
@@ -145,7 +145,7 @@ Multiple R-squared:  0.4868,	Adjusted R-squared:  0.4771
 F-statistic: 50.27 on 1 and 53 DF,  p-value: 3.233e-09
 #we have a small p-value which supports the exponential model
 
-#graph of beta versus fire cover
+#graph of beta versus fire cover with the beast fit curve
 > sortx=sort(newx)
 > sorty=0.1337*0.9999^sortx
 > plot(newx,newy,xlab="Fire Cover",ylab="Beta Sensitivity")
